@@ -1,3 +1,5 @@
 object Main extends App {
-  println("hello, world.")
+  def helloWorld = "hello, world."
+  
+  println(helloWorld)
 }
