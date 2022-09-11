@@ -1,9 +1,9 @@
-name: GitHub Actions Demo
+name: Build and Test
 
 on: [push]
 
 jobs:
-  test:
+  Build:
     runs-on: ubuntu-20.04
     timeout-minutes: 10
     steps:
@@ -15,17 +15,17 @@ jobs:
           java-version: '11'
           cache: 'sbt'
 
-      - name: Test
-        run: sbt test
+      - name: Build with SBT
+        run: sbt package
 
-  build:
+  Test:
     runs-on: ubuntu-20.04
     timeout-minutes: 10
     needs:
-      - test
+      - build
     steps:
-      - name: Build with SBT
-        run: sbt package
+      - name: Test
+        run: sbt test
 
   Explore-GitHub-Actions:
     runs-on: ubuntu-20.04
